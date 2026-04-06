@@ -161,6 +161,9 @@ fn build_to(dir_name: &str) {
     println!("\n  {ok}/{} books built", BOOKS.len());
 
     write_landing_page(&out);
+
+    // Prevent GitHub Pages from processing the output with Jekyll
+    fs::write(out.join(".nojekyll"), "").expect("failed to create .nojekyll");
     println!("\nDone! Output in {dir_name}/");
 }
 
